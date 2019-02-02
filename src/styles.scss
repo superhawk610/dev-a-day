@@ -48,6 +48,8 @@ body {
 
 @media screen and (max-width: 991px) {
   .squeeze {
-    padding-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 800px;
   }
 }

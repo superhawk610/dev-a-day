@@ -6,10 +6,10 @@ const article: Article = {
   id: 1,
   slug: 'hello-world',
   header: 'Hello, world!',
-  subheader: 'My first post.',
+  subheader: '',
   body,
-  preview: 'This is a post excerpt',
-  tags: [TAGS.angular, TAGS.javascript],
+  preview: 'In which our intrepid hero embarks upon a perilous quest.',
+  tags: [],
   publishedOn: '2019-02-01',
   author: 'Aaron Ross',
 };

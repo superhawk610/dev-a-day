@@ -1,9 +1,14 @@
 <div *ngIf="article" id="article-wrap" class="squeeze">
   <h1 class="header">{{ article.header }}</h1>
-  <h2 class="subheader">{{ article.subheader }}</h2>
+  <h2 *ngIf="article.subheader; else spacer" class="subheader">
+    {{ article.subheader }}
+  </h2>
+  <ng-template #spacer>
+    <div class="spacer"></div>
+  </ng-template>
   <markdown lineNumbers [data]="article.body"></markdown>
   <div class="article-meta">
-    <div class="tags">
+    <div *ngIf="article.tags.length" class="tags">
       <i data-feather="tag" height="15"></i>
       <a
         *ngFor="let tag of article.tags"

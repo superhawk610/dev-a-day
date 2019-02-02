@@ -39,6 +39,14 @@
   }
 }
 
+.spacer {
+  display: block;
+  margin: 25px 0 15px;
+  width: 100px;
+  height: 1px;
+  background: #eee;
+}
+
 :host ::ng-deep .section {
   position: relative;
   margin-top: 25px;
