@@ -39,6 +39,7 @@ export class ArticleViewComponent implements OnInit {
   }
 
   configureMarkdownRenderer() {
+    // add permalink buttons to all heading
     this.markdownService.renderer.heading = (text: string, level: number) => {
       const slug = slugify(text);
       return `
@@ -49,6 +50,18 @@ export class ArticleViewComponent implements OnInit {
           </a>
         </div>
       `;
+    };
+
+    // open links in a new tab
+    this.markdownService.renderer.link = (
+      href: string,
+      title: string,
+      text: string,
+    ) => {
+      if (title) {
+        return `<a href="${href}" title="${title}" target="_blank">${text}</a>`;
+      }
+      return `<a href="${href}" target="_blank">${text}</a>`;
     };
   }
 }
