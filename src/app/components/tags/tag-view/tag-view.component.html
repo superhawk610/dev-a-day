@@ -1,5 +1,6 @@
+<h1 id="page-title">Articles</h1>
+<div id="page-title-fade"></div>
 <div class="squeeze">
-  <h1 id="page-title">Articles</h1>
   <div *ngIf="tag" class="badge badge-{{ helpersService.getTagColor(tag) }}">
     #{{ tag.name }}
   </div>
@@ -18,7 +19,4 @@
       There's nothing here :(
     </div>
   </ng-template>
-  <div *ngIf="articles?.length" class="applause">
-    That's all, folks!
-  </div>
 </div>

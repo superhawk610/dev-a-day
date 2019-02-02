@@ -1,5 +1,6 @@
+<h1 id="page-title">Articles</h1>
+<div id="page-title-fade"></div>
 <div class="squeeze">
-  <h1 id="page-title">Articles</h1>
   <div class="article-preview" *ngFor="let article of articles">
     <h3>{{ article.header }}</h3>
     <h4 class="subheader">{{ article.subheader }}</h4>
@@ -8,5 +9,4 @@
       <a routerLink="/articles/{{ article.slug }}">Read More...</a>
     </p>
   </div>
-  <div class="applause">That's all, folks!</div>
 </div>

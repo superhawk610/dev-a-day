@@ -10,22 +10,44 @@ body {
 .squeeze {
   max-width: 725px;
   padding-left: 125px;
+  position: relative;
+  z-index: 2;
 }
 
 #page-title {
   position: absolute;
   font-size: 8rem;
   font-weight: 700;
-  color: #f4f4f4;
+  color: #d8d8d8;
   top: 125px;
-  left: -10px;
+  left: -25px;
   z-index: 0;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   user-select: none;
 }
 
+#page-title-fade {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  max-height: 575px;
+  width: 100px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.8) 50px
+  );
+}
+
 .squeeze > :not(#page-title) {
   position: relative;
-  z-index: 1;
+  z-index: 3;
+}
+
+@media screen and (max-width: 991px) {
+  .squeeze {
+    padding-left: 0;
+  }
 }
