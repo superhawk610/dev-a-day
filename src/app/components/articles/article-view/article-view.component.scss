@@ -47,6 +47,7 @@
   background: #eee;
 }
 
+// header permalinks
 :host ::ng-deep .section {
   position: relative;
   margin-top: 25px;
@@ -72,5 +73,24 @@
     &:active {
       color: #555;
     }
+  }
+}
+
+// markdown tables
+:host ::ng-deep table {
+  width: 100%;
+  margin: 25px 0;
+
+  > thead > tr > th {
+    background: #f2f2f2;
+    padding: 2px 8px;
+  }
+
+  > tbody > tr > td {
+    padding: 2px 8px;
+  }
+
+  > tbody > tr:nth-of-type(even) > td {
+    background: #f8f8f8;
   }
 }
