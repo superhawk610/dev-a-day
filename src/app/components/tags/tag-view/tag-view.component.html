@@ -1,0 +1,24 @@
+<div class="squeeze">
+  <h1 id="page-title">Articles</h1>
+  <div *ngIf="tag" class="badge badge-{{ helpersService.getTagColor(tag) }}">
+    #{{ tag.name }}
+  </div>
+  <ng-container *ngIf="articles?.length; else noArticles">
+    <div class="article-preview" *ngFor="let article of articles">
+      <h3>{{ article.header }}</h3>
+      <h4 class="subheader">{{ article.subheader }}</h4>
+      <p>
+        {{ article.preview }}
+        <a routerLink="/articles/{{ article.slug }}">Read More...</a>
+      </p>
+    </div>
+  </ng-container>
+  <ng-template #noArticles>
+    <div id="nothing-found">
+      There's nothing here :(
+    </div>
+  </ng-template>
+  <div *ngIf="articles?.length" class="applause">
+    That's all, folks!
+  </div>
+</div>

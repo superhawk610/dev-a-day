@@ -1,0 +1,25 @@
+<div *ngIf="article" id="article-wrap" class="squeeze">
+  <h1 class="header">{{ article.header }}</h1>
+  <h2 class="subheader">{{ article.subheader }}</h2>
+  <markdown lineNumbers [data]="article.body"></markdown>
+  <div class="article-meta">
+    <div class="tags">
+      <i data-feather="tag" height="15"></i>
+      <a
+        *ngFor="let tag of article.tags"
+        routerLink="/tags/{{ tag.name }}"
+        class="badge badge-{{ helpersService.getTagColor(tag) }}"
+      >
+        #{{ tag.name }}
+      </a>
+    </div>
+    <div class="publish">
+      <i data-feather="calendar" height="15"></i>
+      {{ helpersService.formatShortDate(article.publishedOn) }}
+    </div>
+    <div class="authors">
+      <i data-feather="user" height="15"></i>
+      {{ article.author }}
+    </div>
+  </div>
+</div>

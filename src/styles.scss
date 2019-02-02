@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background: #f5f5f5 !important;
+  min-height: 100vh;
+}
+
+.feather {
+  transform: translateY(2px);
+}
+
+.squeeze {
+  max-width: 725px;
+  padding-left: 125px;
+}
+
+#page-title {
+  position: absolute;
+  font-size: 8rem;
+  font-weight: 700;
+  color: #f4f4f4;
+  top: 125px;
+  left: -10px;
+  z-index: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  user-select: none;
+}
+
+.squeeze > :not(#page-title) {
+  position: relative;
+  z-index: 1;
+}

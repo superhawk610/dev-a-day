@@ -1,0 +1,18 @@
+<div class="navbar-wrap">
+  <nav class="navbar navbar-default navbar-expand-lg">
+    <a class="navbar-brand" routerLink="/">#dev-a-day</a>
+    <button
+      type="button"
+      class="navbar-toggler"
+      data-toggle="collapse"
+      data-target="#nav-collapse"
+    ></button>
+    <div class="collapse navbar-collapse" id="nav-collapse">
+      <ul class="nav navbar-nav mr-auto">
+        <li *ngFor="let route of routes" [class.active]="routeIsActive(route)">
+          <a [routerLink]="route.path">{{ route.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

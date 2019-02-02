@@ -1,0 +1,14 @@
+#not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200px;
+  font-size: 18px;
+  font-weight: 700;
+
+  > .feather {
+    margin-top: 25px;
+    color: #ddd;
+  }
+}

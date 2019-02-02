@@ -1,0 +1,51 @@
+.badge {
+  font-size: 2rem;
+  padding-top: 80px;
+  padding-right: 50px;
+  cursor: default;
+  margin: 50px 0 30px;
+  transition: margin 300ms ease-out;
+}
+
+.article-preview {
+  margin-bottom: 25px;
+
+  .subheader {
+    display: inline-block;
+    position: relative;
+    font-size: 1.2rem;
+    color: #333;
+    background: #f8f8f8;
+    border-radius: 4px;
+    padding: 4px 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 100px;
+  }
+
+  &:not(:last-child)::after {
+    content: '';
+    display: block;
+    margin: 30px 0;
+    width: 100px;
+    height: 1px;
+    background: #f8f8f8;
+  }
+}
+
+.applause {
+  color: #ddd;
+}
+
+#nothing-found {
+  font-size: 24px;
+  font-weight: 700;
+  color: #444;
+}
+
+@media screen and (max-width: 991px) {
+  .badge {
+    margin-top: 0;
+  }
+}

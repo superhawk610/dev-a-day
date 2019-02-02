@@ -1,0 +1,20 @@
+.tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 50px;
+  transition: padding 300ms ease-out;
+
+  .badge {
+    font-size: 2rem;
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .tags {
+    padding-top: 0;
+  }
+}
