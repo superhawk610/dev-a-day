@@ -47,50 +47,63 @@
   background: #eee;
 }
 
-// header permalinks
-:host ::ng-deep .section {
-  position: relative;
-  margin-top: 25px;
+// markdown styling
+:host ::ng-deep {
+  // header permalinks
+  .section {
+    position: relative;
+    margin-top: 25px;
 
-  > h3 {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-  }
-
-  > a {
-    position: absolute;
-    top: 50%;
-    left: -28px;
-    color: #bbb;
-    transform: translateY(-50%);
-    opacity: 0;
-    transition: opacity 400ms ease-out;
-
-    &:hover {
-      opacity: 1;
+    > h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
     }
 
-    &:active {
-      color: #555;
+    > a {
+      position: absolute;
+      top: 50%;
+      left: -28px;
+      color: #bbb;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 400ms ease-out;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:active {
+        color: #555;
+      }
     }
   }
-}
 
-// markdown tables
-:host ::ng-deep table {
-  width: 100%;
-  margin: 25px 0;
+  // tables
+  table {
+    width: 100%;
+    margin: 25px 0;
 
-  > thead > tr > th {
-    background: #f2f2f2;
-    padding: 2px 8px;
+    > thead > tr > th {
+      background: #f2f2f2;
+      padding: 2px 8px;
+    }
+
+    > tbody > tr > td {
+      padding: 2px 8px;
+    }
+
+    > tbody > tr:nth-of-type(even) > td {
+      background: #f8f8f8;
+    }
   }
 
-  > tbody > tr > td {
-    padding: 2px 8px;
-  }
+  // code blocks
+  pre {
+    margin-bottom: 1rem;
 
-  > tbody > tr:nth-of-type(even) > td {
-    background: #f8f8f8;
+    // dedent the first token
+    > code > .token.keyword:first-child {
+      margin-left: -0.35rem;
+    }
   }
 }
