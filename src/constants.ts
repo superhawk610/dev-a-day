@@ -1,5 +1,7 @@
 import { Tag } from './app/models/tag.model';
 
+export const API_ROOT = '/assets';
+
 export const NAVIGATION_ROUTES = [
   { name: 'Articles', path: '/articles' },
   { name: 'Tags', path: '/tags' },

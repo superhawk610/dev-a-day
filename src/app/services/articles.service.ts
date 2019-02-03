@@ -1,26 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Article, ArticleWhereUniqueInput } from '../models/article.model';
 import { Tag, TagWhereUniqueInput } from '../models/tag.model';
-import { TAGS } from '../../constants';
-import { articles } from '../articles';
-
-const articlesNewestFirst = articles.reverse();
+import { API_ROOT, TAGS } from '../../constants';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticlesService {
-  constructor() {}
+  apiRoot = API_ROOT;
+  articles: Article[] = [];
+
+  constructor(private http: HttpClient) {}
+
+  async getCachedArticles(): Promise<Article[]> {
+    if (this.articles.length) return this.articles;
+
+    const articles = await (this.http
+      .get(`${this.apiRoot}/articles.json`)
+      .toPromise() as Promise<Article[]>);
+    this.articles = articles.reverse();
+    return this.articles;
+  }
 
   async getArticles({ tagName }: { tagName?: string } = {}): Promise<
     Article[]
   > {
+    const articles = await this.getCachedArticles();
     if (tagName) {
-      return articlesNewestFirst.filter(
+      return articles.filter(
         a => a.tags.findIndex(t => t.name === tagName) !== -1,
       );
     }
-    return articlesNewestFirst;
+    return articles;
   }
 
   async getArticle({ id, slug }: ArticleWhereUniqueInput): Promise<Article> {
@@ -34,12 +46,21 @@ export class ArticlesService {
     let article;
     switch (true) {
       case Boolean(id):
-        return articles.find(a => a.id === id);
+        article = articles.find(a => a.id === id);
+        break;
       case Boolean(slug):
-        return articles.find(a => a.slug === slug);
+        article = articles.find(a => a.slug === slug);
+        break;
     }
 
-    return article || {};
+    if (!article) return {} as Article;
+    const articleBody = await (this.http
+      .get(`${this.apiRoot}/md/${article.body}.md`, { responseType: 'text' })
+      .toPromise() as Promise<string>);
+    return {
+      ...article,
+      body: articleBody,
+    };
   }
 
   async getTags(): Promise<Tag[]> {

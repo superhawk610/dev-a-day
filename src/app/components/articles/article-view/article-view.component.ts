@@ -63,5 +63,17 @@ export class ArticleViewComponent implements OnInit {
       }
       return `<a href="${href}" target="_blank">${text}</a>`;
     };
+
+    // transform relative img src links to pull from /assets
+    this.markdownService.renderer.image = (
+      href: string,
+      title: string,
+      text: string,
+    ) => {
+      if (title) {
+        return `<img src="/assets/${href}" title="${title}" alt="${text}" />`;
+      }
+      return `<img src="/assets/${href}" alt="${text}" />`;
+    };
   }
 }
