@@ -15,7 +15,7 @@ export class HelpersService {
     return tag ? COLORS[(tag.id - 1) % COLORS.length] : '';
   }
 
-  formatShortDate(d: string): string {
+  formatMediumDate(d: string): string {
     return format(parseISO(d), 'MMMM do, yyyy');
   }
 }

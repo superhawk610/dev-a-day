@@ -5,18 +5,7 @@
     #{{ tag.name }}
   </div>
   <ng-container *ngIf="articles?.length; else noArticles">
-    <div class="article-preview" *ngFor="let article of articles">
-      <a routerLink="/articles/{{ article.slug }}"
-        ><h3>{{ article.header }}</h3></a
-      >
-      <h4 *ngIf="article.subheader" class="subheader">
-        {{ article.subheader }}
-      </h4>
-      <p>
-        {{ article.preview }}
-        <a routerLink="/articles/{{ article.slug }}">Read More...</a>
-      </p>
-    </div>
+    <article-list [articles]="articles"></article-list>
   </ng-container>
   <ng-template #noArticles>
     <div id="nothing-found">

@@ -5,9 +5,15 @@ import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticlesComponent } from './articles.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [ArticlesComponent, ArticleViewComponent],
-  imports: [CommonModule, ArticlesRoutingModule, MarkdownModule.forChild()],
+  imports: [
+    SharedModule,
+    CommonModule,
+    ArticlesRoutingModule,
+    MarkdownModule.forChild(),
+  ],
 })
 export class ArticlesModule {}
