@@ -41,7 +41,7 @@ export class ArticleViewComponent implements OnInit {
   configureMarkdownRenderer() {
     // add permalink buttons to all heading
     this.markdownService.renderer.heading = (text: string, level: number) => {
-      const slug = slugify(text);
+      const slug = slugify(text).toLowerCase();
       return `
         <div class="section">
           <h${level} id="${slug}">${text}</h${level}>
