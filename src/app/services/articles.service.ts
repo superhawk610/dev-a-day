@@ -4,6 +4,8 @@ import { Tag, TagWhereUniqueInput } from '../models/tag.model';
 import { TAGS } from '../../constants';
 import { articles } from '../articles';
 
+const articlesNewestFirst = articles.reverse();
+
 @Injectable({
   providedIn: 'root',
 })
@@ -14,11 +16,11 @@ export class ArticlesService {
     Article[]
   > {
     if (tagName) {
-      return articles.filter(
+      return articlesNewestFirst.filter(
         a => a.tags.findIndex(t => t.name === tagName) !== -1,
       );
     }
-    return articles;
+    return articlesNewestFirst;
   }
 
   async getArticle({ id, slug }: ArticleWhereUniqueInput): Promise<Article> {
