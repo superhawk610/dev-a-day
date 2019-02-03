@@ -7,6 +7,11 @@
 <p align="center">Writing about development once a day for a year.</div>
 
 <p>&nbsp;</p>
+
+<p align="center">
+<img src="src/favicon.png" height="128" width="128" />
+</p>
+
 <p>&nbsp;</p>
 
 ## Rationale
