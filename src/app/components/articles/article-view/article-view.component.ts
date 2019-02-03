@@ -31,10 +31,8 @@ export class ArticleViewComponent implements OnInit {
     const article = await this.articlesService.getArticle({ slug });
     this.titleService.setDocumentTitle(article.header);
     this.article = article;
-  }
 
-  ngAfterViewInit() {
-    // wait until the next tick
+    // wait for next tick
     setTimeout(() => feather.replace(), 0);
   }
 
