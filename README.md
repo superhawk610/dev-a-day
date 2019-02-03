@@ -1,16 +1,16 @@
 <h1 align="center">dev-a-day</h1>
 
 <p align="center">
-<img src="license-badge.png"></img>
+<img src="license-badge.png" height="28"></img>
 </p>
-
-<p align="center">Writing about development once a day for a year.</div>
 
 <p>&nbsp;</p>
 
 <p align="center">
-<img src="src/favicon.png" height="128" width="128" />
+<img src="src/favicon.png" height="256" width="256" />
 </p>
+
+<p align="center">Writing about development once a day for a year.</p>
 
 <p>&nbsp;</p>
 
