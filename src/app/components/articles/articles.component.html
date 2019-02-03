@@ -2,7 +2,9 @@
 <div id="page-title-fade"></div>
 <div class="squeeze">
   <div class="article-preview" *ngFor="let article of articles">
-    <h3>{{ article.header }}</h3>
+    <a routerLink="/articles/{{ article.slug }}"
+      ><h3>{{ article.header }}</h3></a
+    >
     <h4 *ngIf="article.subheader" class="subheader">{{ article.subheader }}</h4>
     <p>
       {{ article.preview }}
