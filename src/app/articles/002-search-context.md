@@ -105,9 +105,7 @@ filter function:
 ```js
 function getRowsMatchingUserInput(input) {
   return data.filter(row => {
-    const searchContext = `${row.name}\0${row.job}\0${
-      row.office
-    }`.toLowerCase();
+    const searchContext = `${row.name}\0${row.job}\0${row.office}`.toLowerCase();
     return searchContext.indexOf(input.toLowerCase()) !== -1;
   });
 }
