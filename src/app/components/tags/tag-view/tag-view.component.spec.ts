@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TagViewComponent } from './tag-view.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SharedModule } from '../../shared/shared.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TagViewComponent', () => {
   let component: TagViewComponent;
@@ -8,9 +11,9 @@ describe('TagViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TagViewComponent ]
-    })
-    .compileComponents();
+      imports: [SharedModule, RouterTestingModule, HttpClientTestingModule],
+      declarations: [TagViewComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
