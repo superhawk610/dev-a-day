@@ -60,7 +60,7 @@ reducer(user, new Date(2019, 2, 3).toLocaleDateString());
 // }
 ```
 
-This reducer takes a piece of data (a `user` model) and updates the `lastUpdated` timestamp.
+This reducer takes a piece of data (a `user` model) and returns a copy with an updated timestamp.
 Here's the data flow for this reducer (note that the inputs are of different types):
 
 ![typical-reducer](003-typical-reducer.png)
@@ -270,10 +270,13 @@ If you're feeling especially cheeky, we can spice this up with a bit of ES6 magi
 
 ```js
 function keyBy(arr, property) {
-  return arr.reduce((acc, current) => ({
-    ...acc,
-    [current[property]]: current,
-  }), {});
+  return arr.reduce(
+    (acc, current) => ({
+      ...acc,
+      [current[property]]: current,
+    }),
+    {},
+  );
 }
 ```
 
