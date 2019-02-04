@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Article, ArticleWhereUniqueInput } from '../models/article.model';
+import {
+  Article,
+  ArticleWhereUniqueInput,
+  MaybeArticle,
+} from '../models/article.model';
 import { Tag, TagWhereUniqueInput } from '../models/tag.model';
 import { API_ROOT, TAGS } from '../../constants';
 import { HttpClient } from '@angular/common/http';
@@ -61,6 +65,25 @@ export class ArticlesService {
       ...article,
       body: articleBody,
     };
+  }
+
+  async getSurroundingArticles(
+    article: Article,
+  ): Promise<[MaybeArticle, MaybeArticle]> {
+    const articles = await this.getArticles();
+    const idx = articles.findIndex(({ id }) => article.id === id);
+    switch (idx) {
+      case 0:
+        return [null, articles[idx + 1]];
+      case articles.length - 1:
+        return [articles[idx - 1], null];
+      case -1:
+        throw new Error(
+          `Invalid input: article with id ${article.id} does not exist`,
+        );
+      default:
+        return [articles[idx - 1], articles[idx + 1]];
+    }
   }
 
   async getTags(): Promise<Tag[]> {

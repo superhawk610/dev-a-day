@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  NavigationEnd,
+  RouterEvent,
+} from '@angular/router';
 import { TitleService } from '../../../services/title.service';
-import { Article } from '../../../models/article.model';
+import { MaybeArticle } from '../../../models/article.model';
 import { HelpersService } from '../../../services/helpers.service';
-import { MarkdownService } from 'ngx-markdown';
 import { ArticlesService } from '../../../services/articles.service';
+import { MarkdownService } from 'ngx-markdown';
 import slugify from 'slugify';
 
 declare const feather;
@@ -15,9 +20,12 @@ declare const feather;
   styleUrls: ['./article-view.component.scss'],
 })
 export class ArticleViewComponent implements OnInit {
-  article: Article;
+  article: MaybeArticle;
+  prevArticle: MaybeArticle = null;
+  nextArticle: MaybeArticle = null;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private articlesService: ArticlesService,
     private markdownService: MarkdownService,
@@ -27,8 +35,23 @@ export class ArticleViewComponent implements OnInit {
 
   async ngOnInit() {
     this.configureMarkdownRenderer();
+    this.loadArticle();
+    this.router.events.subscribe((event: RouterEvent) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        this.article = null;
+        this.loadArticle();
+      }
+    });
+  }
+
+  async loadArticle() {
     const slug = this.route.snapshot.paramMap.get('slug');
     const article = await this.articlesService.getArticle({ slug });
+    [
+      this.nextArticle,
+      this.prevArticle,
+    ] = await this.articlesService.getSurroundingArticles(article);
     this.titleService.setDocumentTitle(article.header);
     this.article = article;
 

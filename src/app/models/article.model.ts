@@ -12,6 +12,8 @@ export interface Article {
   author: string;
 }
 
+export type MaybeArticle = Article | null;
+
 export interface ArticleWhereUniqueInput {
   id?: number;
   slug?: string;

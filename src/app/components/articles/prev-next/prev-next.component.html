@@ -1,0 +1,17 @@
+<div id="prev-next">
+  <a
+    *ngIf="prev; else placeholder"
+    routerLink="/articles/{{ prev.slug }}"
+    id="prev"
+  >
+    <div class="prev-next-label">PREVIOUS</div>
+    <div class="prev-next-title">{{ prev.header }}</div>
+  </a>
+  <ng-template #placeholder>
+    <div></div>
+  </ng-template>
+  <a *ngIf="next" routerLink="/articles/{{ next.slug }}" id="next">
+    <div class="prev-next-label">NEXT</div>
+    <div class="prev-next-title">{{ next.header }}</div>
+  </a>
+</div>
