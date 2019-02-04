@@ -63,8 +63,11 @@ export class ArticleViewComponent implements OnInit {
 
       // add listeners to header permalinks
       $('markdown [data-permalink]').on('click', this.scrollToHeader);
+    }, 0);
 
-      // scroll to hash if present in location.pathname
+    // scroll to hash if present in location.pathname (wait a second to give
+    // the DOM time to properly calculate image sizes and offset accordingly)
+    setTimeout(() => {
       const hash = location.hash;
       if (hash) {
         try {
@@ -80,7 +83,7 @@ export class ArticleViewComponent implements OnInit {
           /* fail silently */
         }
       }
-    }, 0);
+    }, 1000);
   }
 
   scrollToHeader(event: Event) {
