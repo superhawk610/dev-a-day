@@ -112,8 +112,21 @@
     margin-bottom: 1rem;
 
     // dedent the first token
-    > code > .token.keyword:first-child {
+    > code > .token:first-child {
       margin-left: -0.35rem;
+    }
+
+    &:not([class*=' language-']) {
+      background: #f8f8f8;
+      white-space: pre-wrap;
+
+      code {
+        background: #f8f8f8;
+
+        &:first-child {
+          margin-left: -0.35rem;
+        }
+      }
     }
   }
 
