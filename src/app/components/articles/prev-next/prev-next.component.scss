@@ -111,5 +111,16 @@
 @media screen and (max-width: 991px) {
   #prev-next {
     padding: 0 10px;
+    flex-direction: column;
+    align-items: stretch;
+
+    > :first-child {
+      transform: translateX(10px);
+    }
+
+    > :nth-child(2) {
+      transform: translateX(-10px);
+      margin-top: 15px;
+    }
   }
 }

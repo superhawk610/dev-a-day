@@ -4,3 +4,10 @@
   padding: 25px;
   padding-top: 0;
 }
+
+@media screen and (max-width: 991px) {
+  #page-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
