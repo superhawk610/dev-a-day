@@ -2,5 +2,6 @@ import feb1 from './001-hello-world';
 import feb2 from './002-search-context';
 import feb3 from './003-reducers';
 import feb4 from './004-transducers';
+import feb5 from './005-ninja-reducers';
 
-export const articles = [feb1, feb2, feb3, feb4];
+export const articles = [feb1, feb2, feb3, feb4, feb5];
