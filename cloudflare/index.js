@@ -11,9 +11,11 @@ function error(output) {
   process.exit(1);
 }
 
-const result = dotenv.config({ path: path.join(__dirname, '.env') });
-if (result.error) {
-  error(result.error);
+if (!process.env.CI) {
+  const result = dotenv.config({ path: path.join(__dirname, '.env') });
+  if (result.error) {
+    error(result.error);
+  }
 }
 
 const { CF_ZONE_ID, CF_API_KEY } = process.env;
