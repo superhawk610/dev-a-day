@@ -1,6 +1,14 @@
 .article-preview {
   margin-bottom: 25px;
 
+  > p {
+    margin-bottom: 5px;
+  }
+
+  > .tags > .badge {
+    margin-right: 5px;
+  }
+
   .article-date {
     position: relative;
     font-size: 14px;

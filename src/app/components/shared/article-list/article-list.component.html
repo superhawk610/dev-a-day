@@ -10,6 +10,15 @@
     {{ article.preview }}
     <a routerLink="/articles/{{ article.slug }}">Read More...</a>
   </p>
+  <div *ngIf="article.tags.length" class="tags">
+    <a
+      *ngFor="let tag of article.tags"
+      routerLink="/tags/{{ tag.name }}"
+      class="badge badge-{{ helpersService.getTagColor(tag) }}"
+    >
+      #{{ tag.name }}
+    </a>
+  </div>
 </div>
 
 <back-to-top></back-to-top>
