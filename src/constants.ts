@@ -20,9 +20,9 @@ export const TAGS: { [name: string]: Tag } = {
     id: 3,
     name: 'angular',
   },
-  react: {
+  fp: {
     id: 4,
-    name: 'react',
+    name: 'fp',
   },
   go: {
     id: 5,
@@ -32,8 +32,12 @@ export const TAGS: { [name: string]: Tag } = {
     id: 6,
     name: 'rust',
   },
-  swift: {
+  react: {
     id: 7,
+    name: 'react',
+  },
+  swift: {
+    id: 8,
     name: 'swift',
   },
 };
