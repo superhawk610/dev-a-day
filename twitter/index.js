@@ -51,7 +51,7 @@ function getStatus() {
     const tweet = await client.post('statuses/update', { status: getStatus() });
     console.log();
     console.log('  -- SUCCESSFULLY POSTED TO TWITTER --');
-    console.log(`  -- LINK: https://twitter.com/superhawk610/status/${tweet.id} --`);
+    console.log(`  -- LINK: https://twitter.com/superhawk610/status/${tweet.id_str} --`);
     console.log();
   } catch (e) {
     error(e);
