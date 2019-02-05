@@ -11,7 +11,7 @@ const article: Article = {
   modern layers of abstraction, but code can often be boiled down
   to piping some number of inputs to some other form of output.
   Reducers play a key role in this process.`,
-  tags: [TAGS.javascript],
+  tags: [TAGS.javascript, TAGS.fp],
   publishedOn: '2019-02-03',
   author: 'Aaron Ross',
 };
