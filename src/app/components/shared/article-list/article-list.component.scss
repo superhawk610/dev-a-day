@@ -13,12 +13,13 @@
     position: relative;
     font-size: 14px;
     color: #999;
+    padding-left: 12px;
 
     &::before {
       content: '>';
       position: absolute;
       top: 48%;
-      left: -12px;
+      left: 0;
       font-size: 12px;
       color: #bbb;
       transform: translateY(-50%);

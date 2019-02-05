@@ -32,12 +32,12 @@ export const TAGS: { [name: string]: Tag } = {
     id: 6,
     name: 'rust',
   },
-  react: {
-    id: 7,
-    name: 'react',
-  },
   swift: {
-    id: 8,
+    id: 7,
     name: 'swift',
+  },
+  react: {
+    id: 8,
+    name: 'react',
   },
 };
