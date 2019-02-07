@@ -62,7 +62,7 @@ export class ArticleViewComponent implements OnInit {
       feather.replace();
 
       // add listeners to header permalinks
-      $('markdown [data-permalink]').on('click', this.scrollToHeader);
+      $('markdown a[href^="#"]').on('click', this.scrollToHeader);
     }, 0);
 
     // scroll to hash if present in location.pathname (wait a second to give
@@ -89,8 +89,8 @@ export class ArticleViewComponent implements OnInit {
   scrollToHeader(event: Event) {
     event.preventDefault();
     const anchor = (this as unknown) as HTMLAnchorElement;
-    const header: HTMLHeadingElement = $(anchor).prev()[0];
-    const { permalink } = anchor.dataset;
+    const permalink = $(anchor).attr('href');
+    const header: HTMLHeadingElement = $(permalink)[0];
 
     // update browser location hash
     if (typeof history.pushState === 'function') {
@@ -110,13 +110,13 @@ export class ArticleViewComponent implements OnInit {
   configureMarkdownRenderer() {
     // add permalink buttons to all heading
     this.markdownService.renderer.heading = (text: string, level: number) => {
-      const slug = slugify(text)
+      const slug = slugify(text.replace(/&amp;/g, 'and'))
         .toLowerCase()
         .replace(/[^a-z0-9\-]/g, '');
       return `
         <div class="section">
           <h${level} id="${slug}">${text}</h${level}>
-          <a href="#" data-permalink="#${slug}">
+          <a href="#${slug}">
             <i data-feather="link" height="18"></i>
           </a>
         </div>
