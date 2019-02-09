@@ -9,8 +9,8 @@
     "prebuild": "ts-node -P articles/tsconfig.json articles/index.ts",
     "build": "yarn prebuild && ng build",
     "build:prod": "yarn prebuild && ng build --prod",
-    "build:deploy": "yarn prebuild && ng build --prod --base-href \"https://blog.aaronross.tech/\"",
-    "deploy": "yarn build:deploy && angular-cli-ghpages --dir=dist/dev-a-day --cname=blog.aaronross.tech && yarn cloudflare && yarn tweet",
+    "build:deploy": "yarn prebuild && ng build --prod --base-href \"https://dev.aaronross.tech/\"",
+    "deploy": "yarn build:deploy && yarn cloudflare && yarn tweet",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "ng lint"
@@ -46,7 +46,6 @@
     "@angular/language-service": "~7.2.0",
     "@types/jest": "^23.3.13",
     "@types/node": "~8.9.4",
-    "angular-cli-ghpages": "^0.5.3",
     "bytes": "^3.1.0",
     "dotenv": "^6.2.0",
     "got": "^9.6.0",

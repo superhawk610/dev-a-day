@@ -31,7 +31,7 @@ const { CF_ZONE_ID, CF_API_KEY } = process.env;
           'X-Auth-Key': CF_API_KEY,
         },
         body: {
-          files: ['http://blog.aaronross.tech'],
+          files: ['http://dev.aaronross.tech'],
         },
       },
     );
