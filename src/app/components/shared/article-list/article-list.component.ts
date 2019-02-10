@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Article } from '../../../models/article.model';
+import { ArticleIndex } from '../../../models/article.model';
 import { HelpersService } from '../../../services/helpers.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { HelpersService } from '../../../services/helpers.service';
   styleUrls: ['./article-list.component.scss'],
 })
 export class ArticleListComponent implements OnInit {
-  @Input() articles: Article[] = [];
+  @Input() articles: ArticleIndex[] = [];
 
   constructor(private helpersService: HelpersService) {}
 

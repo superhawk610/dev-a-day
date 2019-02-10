@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HelpersService } from '../../services/helpers.service';
-import { TitleService } from '../../services/title.service';
+import { SEOService } from '../../services/seo.service';
 import { ArticlesService } from '../../services/articles.service';
 import { Tag } from '../../models/tag.model';
 
@@ -15,11 +15,11 @@ export class TagsComponent implements OnInit {
   constructor(
     private articlesService: ArticlesService,
     private helpersService: HelpersService,
-    private titleService: TitleService,
+    private seoService: SEOService,
   ) {}
 
   async ngOnInit() {
-    this.titleService.setDocumentTitle('Tags');
+    this.seoService.setDocumentTitle('Tags');
     this.tags = await this.articlesService.getTags();
   }
 }

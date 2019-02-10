@@ -13,13 +13,16 @@ export class BackToTopComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.scrollListener = fromEvent(window, 'scroll').subscribe(
-      this.onScroll.bind(this),
-    );
+    // window doesn't exist in SSR environment
+    if (typeof window !== 'undefined') {
+      this.scrollListener = fromEvent(window, 'scroll').subscribe(
+        this.onScroll.bind(this),
+      );
+    }
   }
 
   ngOnDestroy() {
-    this.scrollListener.unsubscribe();
+    if (this.scrollListener) this.scrollListener.unsubscribe();
   }
 
   onScroll() {
@@ -33,6 +36,9 @@ export class BackToTopComponent implements OnInit {
   }
 
   scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // window doesn't exist in SSR environment
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 }

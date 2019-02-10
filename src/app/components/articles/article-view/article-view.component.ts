@@ -5,8 +5,8 @@ import {
   NavigationEnd,
   RouterEvent,
 } from '@angular/router';
-import { TitleService } from '../../../services/title.service';
-import { MaybeArticle } from '../../../models/article.model';
+import { SEOService } from '../../../services/seo.service';
+import { MaybeArticleIndex, Article } from '../../../models/article.model';
 import { HelpersService } from '../../../services/helpers.service';
 import { ArticlesService } from '../../../services/articles.service';
 import { MarkdownService } from 'ngx-markdown';
@@ -21,9 +21,9 @@ declare const $;
   styleUrls: ['./article-view.component.scss'],
 })
 export class ArticleViewComponent implements OnInit {
-  article: MaybeArticle;
-  prevArticle: MaybeArticle = null;
-  nextArticle: MaybeArticle = null;
+  article: Article;
+  prevArticle: MaybeArticleIndex = null;
+  nextArticle: MaybeArticleIndex = null;
 
   constructor(
     private router: Router,
@@ -31,17 +31,20 @@ export class ArticleViewComponent implements OnInit {
     private articlesService: ArticlesService,
     private markdownService: MarkdownService,
     private helpersService: HelpersService,
-    private titleService: TitleService,
+    private seoService: SEOService,
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.configureMarkdownRenderer();
-    this.loadArticle();
+    if (!this.article) this.loadArticle();
     this.router.events.subscribe((event: RouterEvent) => {
       if (event instanceof NavigationEnd) {
-        window.scrollTo({ top: 0, behavior: 'auto' });
-        this.article = null;
-        this.loadArticle();
+        // window doesn't exist in SSR environment
+        if (typeof window !== 'undefined') {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+          this.article = null;
+          this.loadArticle();
+        }
       }
     });
   }
@@ -53,37 +56,46 @@ export class ArticleViewComponent implements OnInit {
       this.nextArticle,
       this.prevArticle,
     ] = await this.articlesService.getSurroundingArticles(article);
-    this.titleService.setDocumentTitle(article.header);
+    this.seoService.setDocumentTitle(article.header);
+    this.seoService.setDocumentTwitterMeta({
+      site: '@superhawk610',
+      title: article.header,
+      description: article.preview,
+      image: article.id,
+    });
     this.article = article;
 
-    // wait for next tick
-    setTimeout(() => {
-      // insert Feather icons
-      feather.replace();
+    // only attach listeners in browser environment
+    if (typeof location !== 'undefined') {
+      // wait for next tick
+      setTimeout(() => {
+        // insert Feather icons
+        feather.replace();
 
-      // add listeners to header permalinks
-      $('markdown a[href^="#"]').on('click', this.scrollToHeader);
-    }, 0);
+        // add listeners to header permalinks
+        $('markdown a[href^="#"]').on('click', this.scrollToHeader);
+      }, 0);
 
-    // scroll to hash if present in location.pathname (wait a second to give
-    // the DOM time to properly calculate image sizes and offset accordingly)
-    setTimeout(() => {
-      const hash = location.hash;
-      if (hash) {
-        try {
-          const header = document.querySelector(hash);
-          if (header) {
-            header.scrollIntoView({
-              block: 'start',
-              inline: 'nearest',
-              behavior: 'smooth',
-            });
+      // scroll to hash if present in location.pathname (wait a second to give
+      // the DOM time to properly calculate image sizes and offset accordingly)
+      setTimeout(() => {
+        const hash = location.hash;
+        if (hash) {
+          try {
+            const header = document.querySelector(hash);
+            if (header) {
+              header.scrollIntoView({
+                block: 'start',
+                inline: 'nearest',
+                behavior: 'smooth',
+              });
+            }
+          } catch {
+            /* fail silently */
           }
-        } catch {
-          /* fail silently */
         }
-      }
-    }, 1000);
+      }, 1000);
+    }
   }
 
   scrollToHeader(event: Event) {
