@@ -61,8 +61,8 @@ function getStatus() {
     `#devaday Day ${id} - ${header}` +
     '\n\n' +
     preview.replace(/\n\s{2,}/g, ' ') +
-    '\n\n' +
-    `Link: ${link}`
+    ' ' +
+    link
   );
 }
 
