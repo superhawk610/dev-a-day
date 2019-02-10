@@ -5,7 +5,7 @@
     "build:ssr": "yarn build:client-and-server-bundles && yarn webpack:server",
     "build:ssr:prod": "yarn build:client-and-server-bundles:prod && yarn webpack:server",
     "serve:ssr": "node dist/server.js",
-    "build:ci": "yarn build:ssr:prod && pm2 restart dev-a-day",
+    "build:ci": "yarn build:ssr:prod && pm2 restart dev-a-day && yarn cloudflare",
     "build:client-and-server-bundles": "ng build --prod && ng run dev-a-day:server",
     "build:client-and-server-bundles:prod": "ng build --prod && ng run dev-a-day:server:production",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
@@ -18,7 +18,7 @@
     "build:prod": "ng build --prod",
     "build:deploy": "ng build --prod --base-href \"https://blog.aaronross.tech/\"",
     "deploy": "yarn build:deploy && yarn cloudflare && yarn tweet",
-    "deploy:ssr": "yarn build:ci && yarn cloudflare && yarn tweet",
+    "deploy:ssr": "yarn build:ci && yarn tweet",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "ng lint"
