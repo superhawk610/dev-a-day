@@ -1,34 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional, Inject } from '@angular/core';
 import {
   Article,
+  ArticleIndex,
   ArticleWhereUniqueInput,
-  MaybeArticle,
+  MaybeArticleIndex,
 } from '../models/article.model';
 import { Tag, TagWhereUniqueInput } from '../models/tag.model';
-import { API_ROOT, TAGS } from '../../constants';
+import { TAGS } from '../../constants';
 import { HttpClient } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticlesService {
-  apiRoot = API_ROOT;
-  articles: Article[] = [];
+  apiRoot: string;
+  articles: ArticleIndex[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    @Optional() @Inject(APP_BASE_HREF) origin: string,
+    private http: HttpClient,
+  ) {
+    this.apiRoot = `${origin || ''}/api`;
+  }
 
-  async getCachedArticles(): Promise<Article[]> {
+  async getCachedArticles(): Promise<ArticleIndex[]> {
     if (this.articles.length) return this.articles;
 
     const articles = await (this.http
-      .get(`${this.apiRoot}/articles.json`)
-      .toPromise() as Promise<Article[]>);
+      .get(`${this.apiRoot}/articles`)
+      .toPromise() as Promise<ArticleIndex[]>);
     this.articles = articles.reverse();
     return this.articles;
   }
 
   async getArticles({ tagName }: { tagName?: string } = {}): Promise<
-    Article[]
+    ArticleIndex[]
   > {
     const articles = await this.getCachedArticles();
     if (tagName) {
@@ -46,30 +53,19 @@ export class ArticlesService {
       );
     }
 
-    const articles = await this.getArticles();
-    let article;
-    switch (true) {
-      case Boolean(id):
-        article = articles.find(a => a.id === id);
-        break;
-      case Boolean(slug):
-        article = articles.find(a => a.slug === slug);
-        break;
+    if (id) {
+      throw new Error('`id` searching for Articles is not implemented');
     }
 
-    if (!article) return {} as Article;
-    const articleBody = await (this.http
-      .get(`${this.apiRoot}/md/${article.body}.md`, { responseType: 'text' })
-      .toPromise() as Promise<string>);
-    return {
-      ...article,
-      body: articleBody,
-    };
+    const article = await (this.http
+      .get(`${this.apiRoot}/articles/${slug}`)
+      .toPromise() as Promise<Article>);
+    return article || ({} as Article);
   }
 
   async getSurroundingArticles(
     article: Article,
-  ): Promise<[MaybeArticle, MaybeArticle]> {
+  ): Promise<[MaybeArticleIndex, MaybeArticleIndex]> {
     const articles = await this.getArticles();
     const idx = articles.findIndex(({ id }) => article.id === id);
     switch (idx) {

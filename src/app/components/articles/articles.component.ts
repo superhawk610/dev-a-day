@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TitleService } from '../../services/title.service';
-import { Article } from '../../models/article.model';
+import { SEOService } from '../../services/seo.service';
+import { ArticleIndex } from '../../models/article.model';
 import { ArticlesService } from '../../services/articles.service';
 
 @Component({
@@ -9,15 +9,15 @@ import { ArticlesService } from '../../services/articles.service';
   styleUrls: ['./articles.component.scss'],
 })
 export class ArticlesComponent implements OnInit {
-  articles: Article[] = [];
+  articles: ArticleIndex[] = [];
 
   constructor(
     private articlesService: ArticlesService,
-    private titleService: TitleService,
+    private seoService: SEOService,
   ) {}
 
   async ngOnInit() {
-    this.titleService.setDocumentTitle('Articles');
+    this.seoService.setDocumentTitle('Articles');
     this.articles = await this.articlesService.getArticles();
   }
 }

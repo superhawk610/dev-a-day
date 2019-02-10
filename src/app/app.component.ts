@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event: RouterEvent) => {
       // load Feather icons
       if (event instanceof NavigationEnd) {
-        feather.replace();
+        if (typeof feather !== 'undefined') feather.replace();
       }
     });
   }

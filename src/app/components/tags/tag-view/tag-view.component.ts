@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HelpersService } from '../../../services/helpers.service';
 import { Tag } from '../../../models/tag.model';
-import { TitleService } from '../../../services/title.service';
+import { SEOService } from '../../../services/seo.service';
 import { ArticlesService } from '../../../services/articles.service';
-import { Article } from '../../../models/article.model';
+import { ArticleIndex } from '../../../models/article.model';
 
 @Component({
   selector: 'app-tag-view',
@@ -13,18 +13,18 @@ import { Article } from '../../../models/article.model';
 })
 export class TagViewComponent implements OnInit {
   tag: Tag = null;
-  articles: Article[] = [];
+  articles: ArticleIndex[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private articlesService: ArticlesService,
     private helpersService: HelpersService,
-    private titleService: TitleService,
+    private seoService: SEOService,
   ) {}
 
   async ngOnInit() {
     const tagName = this.route.snapshot.paramMap.get('tag');
-    this.titleService.setDocumentTitle(`#${tagName}`);
+    this.seoService.setDocumentTitle(`#${tagName}`);
     this.tag = await this.articlesService.getTag({ name: tagName });
     this.articles = await this.articlesService.getArticles({ tagName });
   }
