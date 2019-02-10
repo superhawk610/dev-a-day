@@ -245,7 +245,7 @@ obs.subscribe(val => console.log('second', val));
 
 ### Subjects
 
-In the **Real World &trade;**, this is rarely the intended result. If we want to hook up multiple subscribers, we generally want to have
+In the **Real World&trade;**, this is rarely the intended result. If we want to hook up multiple subscribers, we generally want to have
 each subscriber react to every `next` output at the same time. To have multiple subscriptions hooked up to the same source Observable,
 we need to use a `Subject`. RxJS `Subject`s accept inputs via their `.next()` method and in turn send these inputs along to _any number of
 subscribers_ in tandem. `Subject`s may also be used as a subscriber for an `Observable` like so:
