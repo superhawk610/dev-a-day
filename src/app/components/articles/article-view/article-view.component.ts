@@ -61,7 +61,7 @@ export class ArticleViewComponent implements OnInit {
       site: '@superhawk610',
       title: article.header,
       description: article.preview,
-      image: 'https://blog.aaronross.tech/assets/007-hook-state.png',
+      image: article.id,
     });
     this.article = article;
 

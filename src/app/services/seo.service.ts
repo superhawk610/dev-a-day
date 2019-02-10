@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 
+import { environment } from '../../environments/environment';
+
 // map from `<meta` names to their content
 interface MetaDefinitions {
   [name: string]: string;
@@ -10,7 +12,7 @@ interface TwitterMetaDefinitions {
   site: string;
   title: string;
   description: string;
-  image: string;
+  image: number; // should just be the article `id`
 }
 
 @Injectable({
@@ -38,6 +40,14 @@ export class SEOService {
   }
 
   setDocumentTwitterMeta(meta: TwitterMetaDefinitions) {
-    this.setDocumentMeta({ ...meta, card: 'summary' }, 'twitter:');
+    const previewImage = `${String(meta.image).padStart(3, '0')}.png`;
+    this.setDocumentMeta(
+      {
+        ...meta,
+        card: 'summary',
+        image: `${environment.appBaseHref}/assets/previews/${previewImage}`,
+      },
+      'twitter:',
+    );
   }
 }
