@@ -41,13 +41,29 @@ export class SEOService {
 
   setDocumentTwitterMeta(meta: TwitterMetaDefinitions) {
     const previewImage = `${String(meta.image).padStart(3, '0')}.png`;
+    const imageUrl = `${
+      environment.appBaseHref
+    }/assets/previews/${previewImage}`;
+
+    // set Twitter-specific tags
     this.setDocumentMeta(
       {
         ...meta,
         card: 'summary',
-        image: `${environment.appBaseHref}/assets/previews/${previewImage}`,
+        image: imageUrl,
       },
       'twitter:',
+    );
+
+    // set OG tags
+    this.setDocumentMeta(
+      {
+        type: 'summary',
+        description: meta.description,
+        title: meta.title,
+        image: imageUrl,
+      },
+      'og:',
     );
   }
 }
