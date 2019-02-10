@@ -17,7 +17,7 @@
     "build:prod": "ng build --prod",
     "build:deploy": "ng build --prod --base-href \"https://blog.aaronross.tech/\"",
     "deploy": "yarn build:deploy && yarn cloudflare && yarn tweet",
-    "deploy:ssr": "yarn build:ssr:prod && pm2 restart dev-a-day",
+    "deploy:ssr": "yarn build:ssr:prod && pm2 restart dev-a-day && yarn cloudflare && yarn tweet",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "ng lint"
