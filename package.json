@@ -15,7 +15,7 @@
     "prebuild": "ts-node -P articles/tsconfig.json articles/index.ts",
     "build": "yarn prebuild && ng build",
     "build:prod": "yarn prebuild && ng build --prod",
-    "build:deploy": "yarn prebuild && ng build --prod --base-href \"https://dev.aaronross.tech/\"",
+    "build:deploy": "yarn prebuild && ng build --prod --base-href \"https://blog.aaronross.tech/\"",
     "deploy": "yarn build:deploy && yarn cloudflare && yarn tweet",
     "test": "jest",
     "test:watch": "jest --watch",
