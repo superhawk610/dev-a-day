@@ -38,4 +38,8 @@ export const TAGS: { [name: string]: Tag } = {
     id: 8,
     name: 'react',
   },
+  python: {
+    id: 9,
+    name: 'python',
+  },
 };
