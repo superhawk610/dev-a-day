@@ -9,7 +9,6 @@ import { Tag, TagWhereUniqueInput } from '../models/tag.model';
 import { TAGS } from '../../constants';
 import { HttpClient } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
-import { articles } from '../../../articles';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +27,9 @@ export class ArticlesService {
   async getCachedArticles(): Promise<ArticleIndex[]> {
     if (this.articles.length) return this.articles;
 
+    const articles = await (this.http
+      .get(`${this.apiRoot}/articles`)
+      .toPromise() as Promise<ArticleIndex[]>);
     this.articles = articles.reverse();
     return this.articles;
   }
@@ -55,8 +57,9 @@ export class ArticlesService {
       throw new Error('`id` searching for Articles is not implemented');
     }
 
-    const articles = (await this.getArticles()) as Article[];
-    const article = articles.find(a => a.slug === slug);
+    const article = await (this.http
+      .get(`${this.apiRoot}/articles/${slug}`)
+      .toPromise() as Promise<Article>);
     return article || ({} as Article);
   }
 
