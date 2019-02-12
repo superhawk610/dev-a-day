@@ -44,5 +44,4 @@ testem.log
 Thumbs.db
 
 # env files
-cloudflare/.env
-twitter/.env
+.env
