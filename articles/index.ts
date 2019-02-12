@@ -8,6 +8,7 @@ import feb7 from './007-more-hooks';
 import feb8 from './008-observables';
 import feb9 from './009-typescript';
 import feb10 from './010-metasyntactic-variables';
+import feb11 from './011-vim';
 
 export const articles = [
   feb1,
@@ -20,4 +21,5 @@ export const articles = [
   feb8,
   feb9,
   feb10,
+  feb11,
 ];
