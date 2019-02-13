@@ -55,10 +55,12 @@ const client = new Twitter({
 
 function getStatus() {
   const article = articles[articles.length - 1];
-  const { id, header, preview, slug } = article;
+  const { id, header, preview, slug, tags } = article;
   const link = `https://blog.aaronross.tech/articles/${slug}`;
   return (
     `#devaday Day ${id} - ${header}` +
+    '\n' +
+    tags.map(tag => `#${tag.name}`).join(' ') +
     '\n\n' +
     preview.replace(/\n\s{2,}/g, ' ') +
     ' ' +
