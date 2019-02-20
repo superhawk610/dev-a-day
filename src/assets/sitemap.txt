@@ -10,6 +10,8 @@ https://blog.aaronross.tech/articles/observables
 https://blog.aaronross.tech/articles/typescript
 https://blog.aaronross.tech/articles/metasyntactic-variables
 https://blog.aaronross.tech/articles/vim
+https://blog.aaronross.tech/articles/object-spread
+https://blog.aaronross.tech/articles/assert
 https://blog.aaronross.tech/tags
 https://blog.aaronross.tech/tags/fp
 https://blog.aaronross.tech/tags/javascript
@@ -20,4 +22,5 @@ https://blog.aaronross.tech/tags/go
 https://blog.aaronross.tech/tags/rust
 https://blog.aaronross.tech/tags/swift
 https://blog.aaronross.tech/tags/python
+https://blog.aaronross.tech/tags/ABCs
 https://blog.aaronross.tech/tags/dev-tools

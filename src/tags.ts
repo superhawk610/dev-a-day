@@ -37,8 +37,12 @@ export const TAGS: { [name: string]: Tag } = {
     id: 9,
     name: 'python',
   },
-  devTools: {
+  abcs: {
     id: 10,
+    name: 'ABCs',
+  },
+  devTools: {
+    id: 11,
     name: 'dev-tools',
   },
 };

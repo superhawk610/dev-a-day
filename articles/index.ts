@@ -10,6 +10,7 @@ import feb9 from './009-typescript';
 import feb10 from './010-metasyntactic-variables';
 import feb11 from './011-vim';
 import feb12 from './012-object-spread';
+import feb19 from './013-assert';
 
 export const articles = [
   feb1,
@@ -24,4 +25,5 @@ export const articles = [
   feb10,
   feb11,
   feb12,
+  feb19,
 ];
