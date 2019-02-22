@@ -24,3 +24,4 @@ https://blog.aaronross.tech/tags/swift
 https://blog.aaronross.tech/tags/python
 https://blog.aaronross.tech/tags/ABCs
 https://blog.aaronross.tech/tags/dev-tools
+https://blog.aaronross.tech/heatmap

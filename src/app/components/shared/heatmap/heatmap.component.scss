@@ -1,0 +1,27 @@
+#heatmap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  > .heatmap-tile {
+    width: 25px;
+    height: 25px;
+    background: #eee;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+
+    &:last-child {
+      margin-right: auto;
+    }
+
+    &.hot {
+      background: limegreen;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}

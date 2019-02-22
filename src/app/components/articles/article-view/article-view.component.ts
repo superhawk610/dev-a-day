@@ -36,7 +36,7 @@ export class ArticleViewComponent implements OnInit {
 
   ngOnInit() {
     this.configureMarkdownRenderer();
-    if (!this.article) this.loadArticle();
+    this.loadArticle();
     this.router.events.subscribe((event: RouterEvent) => {
       if (event instanceof NavigationEnd) {
         // window doesn't exist in SSR environment
@@ -50,6 +50,7 @@ export class ArticleViewComponent implements OnInit {
   }
 
   async loadArticle() {
+    if (this.article) return;
     const slug = this.route.snapshot.paramMap.get('slug');
     const article = await this.articlesService.getArticle({ slug });
     [
