@@ -11,6 +11,7 @@ import feb10 from './010-metasyntactic-variables';
 import feb11 from './011-vim';
 import feb12 from './012-object-spread';
 import feb19 from './013-assert';
+import feb21 from './014-bind';
 
 export const articles = [
   feb1,
@@ -26,4 +27,5 @@ export const articles = [
   feb11,
   feb12,
   feb19,
+  feb21,
 ];
