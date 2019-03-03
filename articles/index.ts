@@ -12,6 +12,7 @@ import feb11 from './011-vim';
 import feb12 from './012-object-spread';
 import feb19 from './013-assert';
 import feb21 from './014-bind';
+import mar3 from './015-const';
 
 export const articles = [
   feb1,
@@ -28,4 +29,5 @@ export const articles = [
   feb12,
   feb19,
   feb21,
+  mar3,
 ];

@@ -13,6 +13,7 @@ https://blog.aaronross.tech/articles/vim
 https://blog.aaronross.tech/articles/object-spread
 https://blog.aaronross.tech/articles/assert
 https://blog.aaronross.tech/articles/bind
+https://blog.aaronross.tech/articles/const
 https://blog.aaronross.tech/tags
 https://blog.aaronross.tech/tags/fp
 https://blog.aaronross.tech/tags/javascript
