@@ -12,6 +12,7 @@ const article: Article = {
   tags: [],
   publishedOn: '2019-02-01',
   author: 'Aaron Ross',
+  readingTime: { text: '3 min read', minutes: 2.015, time: 120900, words: 403 },
 };
 
 export default article;

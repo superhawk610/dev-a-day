@@ -12,6 +12,14 @@ export interface Article {
   tags: Tag[];
   publishedOn: string;
   author: string;
+  readingTime: ReadingTimeStats;
+}
+
+export interface ReadingTimeStats {
+  text: string;
+  minutes: number;
+  time: number;
+  words: number;
 }
 
 export type ArticleIndex = Omit<Article, 'body'>;

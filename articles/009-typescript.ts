@@ -14,6 +14,7 @@ const article: Article = {
   tags: [TAGS.javascript],
   publishedOn: '2019-02-09',
   author: 'Aaron Ross',
+  readingTime: { text: '8 min read', minutes: 7.84, time: 470400, words: 1568 },
 };
 
 export default article;

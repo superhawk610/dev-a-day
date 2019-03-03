@@ -1,6 +1,7 @@
 <div class="article-preview" *ngFor="let article of articles">
   <div class="article-date">
-    {{ helpersService.formatMediumDate(article.publishedOn) }}
+    {{ helpersService.formatMediumDate(article.publishedOn) }} &middot;
+    {{ article.readingTime.text }}
   </div>
   <a routerLink="/articles/{{ article.slug }}">
     <h3>{{ article.header }}</h3>

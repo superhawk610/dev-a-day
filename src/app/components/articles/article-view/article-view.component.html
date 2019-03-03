@@ -6,6 +6,10 @@
   <ng-template #spacer>
     <div class="spacer"></div>
   </ng-template>
+  <div class="reading-time">
+    <i data-feather="clock" height="15"></i>
+    {{ article.readingTime.text }}
+  </div>
   <markdown lineNumbers [data]="article.body"></markdown>
   <div class="article-meta">
     <div *ngIf="article.tags.length" class="tags">
