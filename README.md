@@ -10,7 +10,7 @@
 <img src="src/favicon.png" height="256" width="256" />
 </p>
 
-<p align="center">Writing about development once a day for a year.</p>
+<p align="center">Writing about development <strike>once a day</strike> <strong>a lot</strong> for a year.</p>
 
 <p>&nbsp;</p>
 
