@@ -142,6 +142,11 @@
   // code blocks
   pre {
     margin-bottom: 1rem;
+    overflow: auto;
+    white-space: pre !important;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
 
     // dedent the first token
     > code > .token:first-child {
