@@ -125,6 +125,17 @@ export class ArticleViewComponent implements OnInit {
 
     // add permalink buttons to all heading
     this.markdownService.renderer.heading = (text: string, level: number) => {
+      // h6 tags are headers for code blocks (used to display what file the
+      // code should be contained in)
+      if (level === 6) {
+        return `
+          <h6>
+            <i data-feather="file-text"></i>
+            ${text}
+          </h6>
+        `;
+      }
+
       let slugModifier = 1;
       const slugBase = slugify(text.replace(/&amp;/g, 'and'))
         .toLowerCase()
