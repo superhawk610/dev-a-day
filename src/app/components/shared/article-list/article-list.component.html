@@ -1,25 +1,28 @@
-<div class="article-preview" *ngFor="let article of articles">
-  <div class="article-date">
-    {{ helpersService.formatMediumDate(article.publishedOn) }} &middot;
-    {{ article.readingTime.text }}
-  </div>
-  <a routerLink="/articles/{{ article.slug }}">
-    <h3>{{ article.header }}</h3>
-  </a>
-  <h4 *ngIf="article.subheader" class="subheader">{{ article.subheader }}</h4>
-  <p>
-    {{ article.preview }}
-    <a routerLink="/articles/{{ article.slug }}">Read More...</a>
-  </p>
-  <div *ngIf="article.tags.length" class="tags">
-    <a
-      *ngFor="let tag of article.tags"
-      routerLink="/tags/{{ tag.name }}"
-      class="badge badge-{{ helpersService.getTagColor(tag) }}"
-    >
-      #{{ tag.name }}
+<ng-container *ngFor="let article of articles; let index = index">
+  <div class="article-preview">
+    <div class="article-date">
+      {{ helpersService.formatMediumDate(article.publishedOn) }} &middot;
+      {{ article.readingTime.text }}
+    </div>
+    <a routerLink="/articles/{{ article.slug }}">
+      <h3>{{ article.header }}</h3>
     </a>
+    <h4 *ngIf="article.subheader" class="subheader">{{ article.subheader }}</h4>
+    <p>
+      {{ article.preview }}
+      <a routerLink="/articles/{{ article.slug }}">Read More...</a>
+    </p>
+    <div *ngIf="article.tags.length" class="tags">
+      <a
+        *ngFor="let tag of article.tags"
+        routerLink="/tags/{{ tag.name }}"
+        class="badge badge-{{ helpersService.getTagColor(tag) }}"
+      >
+        #{{ tag.name }}
+      </a>
+    </div>
   </div>
-</div>
+  <subscribe *ngIf="index === 4"></subscribe>
+</ng-container>
 
 <back-to-top></back-to-top>

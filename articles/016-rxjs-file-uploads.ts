@@ -7,7 +7,17 @@ const article: Article = {
   slug: 'rxjs-file-uploads',
   header: 'RxJS File Uploads (Part 1)',
   subheader: 'UI progress updates too!',
-  body: { markdown },
+  body: {
+    markdown,
+    lines: {
+      4: '1,3,11,13,17-26',
+      6: '2,7-16',
+      7: '1,13,17-24',
+      9: '2',
+      10: '4,13-17',
+      11: '1,12',
+    },
+  },
   preview: `A common task in frontend development is uploading
   a file provided by the user. Visual feedback on upload progress
   prevents the user from worrying while they wait.`,

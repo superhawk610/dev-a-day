@@ -38,6 +38,8 @@ app.engine('html', (_, options, callback) => {
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
 
+app.use(express.json());
+
 // Serve static files from `/browser`
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 

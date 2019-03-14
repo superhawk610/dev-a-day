@@ -1,0 +1,122 @@
+$theme-1: #007bff;
+$theme-2: #17a2b8;
+$theme-3: #dc3545;
+$theme-4: #ffc107;
+$theme-5: #28a745;
+
+@mixin subscribe-palette($theme) {
+  background-color: $theme;
+  box-shadow: 10px 10px 50px rgba($theme, 0.4);
+
+  .subscribe__pin {
+    border: 5px solid darken($theme, 15%);
+    background: darken($theme, 25%);
+  }
+
+  .subscribe__input {
+    background: rgba(darken($theme, 10%), 80%);
+    color: darken($theme, 30%);
+
+    &::placeholder {
+      color: darken($theme, 20%);
+    }
+  }
+
+  .subscribe__button {
+    background: rgba(darken($theme, 10%), 80%);
+    color: darken($theme, 30%);
+
+    &:disabled {
+      background: $theme;
+    }
+
+    &:active {
+      background: rgba(darken($theme, 15%), 80%);
+    }
+  }
+}
+
+.subscribe.palette-1 {
+  @include subscribe-palette($theme-1);
+}
+
+.subscribe.palette-2 {
+  @include subscribe-palette($theme-2);
+}
+
+.subscribe.palette-3 {
+  @include subscribe-palette($theme-3);
+}
+
+.subscribe.palette-4 {
+  @include subscribe-palette($theme-4);
+}
+
+.subscribe.palette-5 {
+  @include subscribe-palette($theme-5);
+}
+
+.subscribe {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 4.5rem auto 5rem;
+  padding: 3rem;
+  color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 300ms ease-out;
+  transform: rotate(2deg);
+
+  &:hover {
+    transform: rotate(0deg);
+  }
+
+  &__pin {
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    transform: translateX(-50%);
+    border-radius: 15px;
+  }
+
+  &__header {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 1.5rem 0 1rem;
+  }
+
+  &__body {
+    font-size: 18px;
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    padding: 0.6rem 1rem 0.5rem;
+  }
+
+  &__button {
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 1rem 0.3rem;
+    margin-top: 0.5rem;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: font-size 300ms ease-out;
+
+    &:disabled {
+      font-size: 16px;
+      cursor: default;
+    }
+  }
+}

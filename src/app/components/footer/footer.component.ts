@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-  copyrightYear = new Date().getFullYear();
+  copyrightYear: number;
 
-  constructor() {}
+  constructor() {
+    this.copyrightYear = new Date().getFullYear();
+  }
 
   ngOnInit() {}
 }

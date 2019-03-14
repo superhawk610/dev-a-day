@@ -204,7 +204,7 @@ Head back over to your `upload` component and add in a `<progress>` element to d
 </button>
 ```
 
-###### app/components/upload/upload.component.html (partial)
+###### app/components/upload/upload.component.ts (partial)
 
 ```ts
 export class UploadComponent implements OnInit {

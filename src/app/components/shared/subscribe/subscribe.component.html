@@ -1,0 +1,27 @@
+<div class="subscribe palette-{{ palette }}">
+  <div class="subscribe__pin"></div>
+  <div class="subscribe__header">
+    Keep in touch!
+  </div>
+  <div class="subscribe__body">
+    Enter your email address below to receive email updates whenever I post a
+    new article.
+  </div>
+  <form [formGroup]="form">
+    <input
+      formControlName="email"
+      required
+      type="email"
+      class="subscribe__input"
+      placeholder="Email Address"
+      (keyup)="keyup($event)"
+    />
+  </form>
+  <button
+    [disabled]="!enabledForState(formState)"
+    class="subscribe__button"
+    (click)="subscribe()"
+  >
+    {{ messageForState(formState) }}
+  </button>
+</div>
