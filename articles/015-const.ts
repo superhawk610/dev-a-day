@@ -1,13 +1,13 @@
 import { Article } from '../src/app/models/article.model';
 import { TAGS } from '../src/constants';
-import * as body from './015-const.md';
+import * as markdown from './015-const.md';
 
 const article: Article = {
   id: 15,
   slug: 'const',
   header: 'C is for Const',
   subheader: 'ABCs of JavaScript',
-  body,
+  body: { markdown },
   preview: `JavaScript always knows exactly what variable context you
   intended. For those times where it doesn't, try out a const.`,
   tags: [TAGS.abcs, TAGS.javascript],

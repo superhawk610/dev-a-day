@@ -1,13 +1,13 @@
 import { Article } from '../src/app/models/article.model';
 import { TAGS } from '../src/constants';
-import * as body from './009-typescript.md';
+import * as markdown from './009-typescript.md';
 
 const article: Article = {
   id: 9,
   slug: 'typescript',
   header: 'TypeScript',
   subheader: 'Strong, static typing for JavaScript',
-  body,
+  body: { markdown },
   preview: `Have you ever worked on a huge block of code
   for a few hours, bundled and run it, and it just worked?
   With TypeScript, that becomes a much more common occurence.`,

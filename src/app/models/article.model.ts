@@ -7,12 +7,21 @@ export interface Article {
   slug: string;
   header: string;
   subheader: string;
-  body: string;
+  body: ArticleBody;
   preview: string;
   tags: Tag[];
   publishedOn: string;
   author: string;
   readingTime: ReadingTimeStats;
+}
+
+export interface ArticleBody {
+  markdown: string;
+  lines?: LineHighlightMap;
+}
+
+export interface LineHighlightMap {
+  [codeBlockIndex: string]: string;
 }
 
 export interface ReadingTimeStats {

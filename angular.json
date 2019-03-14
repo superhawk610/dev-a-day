@@ -32,8 +32,7 @@
               "src/vendor/flat-ui/css/flat-ui.css",
               "src/vendor/flat-ui/css/vendor/bootstrap.min.css",
               "node_modules/prismjs/themes/prism-tomorrow.css",
-              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
-              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -49,8 +48,7 @@
               "node_modules/prismjs/components/prism-swift.min.js",
               "node_modules/prismjs/components/prism-ocaml.min.js",
               "node_modules/prismjs/components/prism-go.min.js",
-              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
-              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
             ]
           },
           "configurations": {

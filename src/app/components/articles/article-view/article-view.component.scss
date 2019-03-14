@@ -170,9 +170,35 @@
     word-break: normal;
     word-wrap: normal;
 
-    // dedent the first token
-    > code > .token:first-child {
-      margin-left: -0.35rem;
+    > .row-highlight {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 21px;
+      margin-top: calc(1em + 1px);
+      background: rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    > code {
+      // dedent the first token
+      > .token:first-child {
+        margin-left: -0.35rem;
+      }
+
+      > .line-numbers-rows {
+        background: #232323;
+        border-right-color: #171717;
+
+        > .highlighted {
+          background: #7ec699;
+
+          &::before {
+            color: #2d2d2d;
+          }
+        }
+      }
     }
 
     &:not([class*=' language-']) {

@@ -10,7 +10,7 @@
     <i data-feather="clock" height="15"></i>
     {{ article.readingTime.text }}
   </div>
-  <markdown lineNumbers [data]="article.body"></markdown>
+  <markdown lineNumbers [data]="article.body.markdown"></markdown>
   <div class="article-meta">
     <div *ngIf="article.tags.length" class="tags">
       <i data-feather="tag" height="15"></i>

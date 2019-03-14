@@ -1,13 +1,13 @@
 import { Article } from '../src/app/models/article.model';
 import { TAGS } from '../src/constants';
-import * as body from './016-rxjs-file-uploads.md';
+import * as markdown from './016-rxjs-file-uploads.md';
 
 const article: Article = {
   id: 16,
   slug: 'rxjs-file-uploads',
   header: 'RxJS File Uploads (Part 1)',
   subheader: 'UI progress updates too!',
-  body,
+  body: { markdown },
   preview: `A common task in frontend development is uploading
   a file provided by the user. Visual feedback on upload progress
   prevents the user from worrying while they wait.`,

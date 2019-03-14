@@ -15,6 +15,8 @@ import slugify from 'slugify';
 declare const feather;
 declare const $;
 
+const CODE_LINE_HEIGHT = 21;
+
 @Component({
   selector: 'app-article-view',
   templateUrl: './article-view.component.html',
@@ -85,6 +87,53 @@ export class ArticleViewComponent implements OnInit {
           'click',
           this.internalRedirect.bind(this),
         );
+
+        // highlight lines in code blocks
+        // NOTE: we can't use ngx-markdown's built-in line highlight because
+        // it only supports markdown directives entirely dedicated to a single
+        // code block, whereas we're spreading code blocks throughout the
+        // entire article
+        if (this.article.body.lines) {
+          for (const [codeBlockIndex, _lines] of Object.entries(
+            this.article.body.lines,
+          )) {
+            const lines = _lines.replace(/[^0-9,\-]/g, '');
+            const directives = lines.split(',');
+            const pre = $(`markdown pre`).eq(codeBlockIndex);
+            const lineNumbers = pre.find('.line-numbers-rows > span');
+            const offsets: number[] = [];
+
+            for (const directive of directives) {
+              if (directive.indexOf('-') > -1) {
+                const [start, end] = directive
+                  .split('-')
+                  .map(s => parseInt(s, 10));
+                lineNumbers
+                  .slice(start - 1, end)
+                  .each((_, el: HTMLSpanElement) => {
+                    el.classList.add('highlighted');
+                  });
+                offsets.push(
+                  ...new Array(end - start + 1)
+                    .fill(0)
+                    .map((_, i) => i + start - 1),
+                );
+              } else {
+                const offset = parseInt(directive, 10) - 1;
+                const el: HTMLSpanElement = lineNumbers.eq(offset)[0];
+                el.classList.add('highlighted');
+                offsets.push(offset);
+              }
+            }
+
+            for (const offset of offsets) {
+              pre.append(
+                `<div class="row-highlight" style="top: ${offset *
+                  CODE_LINE_HEIGHT}px"></div>`,
+              );
+            }
+          }
+        }
       }, 0);
 
       // scroll to hash if present in location.pathname (wait a second to give

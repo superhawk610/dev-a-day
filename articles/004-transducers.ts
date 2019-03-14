@@ -1,13 +1,13 @@
 import { Article } from '../src/app/models/article.model';
 import { TAGS } from '../src/constants';
-import * as body from './004-transducers.md';
+import * as markdown from './004-transducers.md';
 
 const article: Article = {
   id: 4,
   slug: 'transducers',
   header: 'Transducers',
   subheader: 'Transforming a reducer',
-  body,
+  body: { markdown },
   preview: `You have a reducer that's almost perfect, but it's not
   quite right. A transducer can take your existing reducer and fit
   it to the task at hand.`,
