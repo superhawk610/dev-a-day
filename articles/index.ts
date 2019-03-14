@@ -13,7 +13,8 @@ import feb12 from './012-object-spread';
 import feb19 from './013-assert';
 import feb21 from './014-bind';
 import mar3 from './015-const';
-import mar10 from './016-rxjs-file-uploads';
+import mar13 from './016-rxjs-file-uploads';
+import mar14 from './017-rxjs-file-uploads-2';
 
 export const articles = [
   feb1,
@@ -31,5 +32,6 @@ export const articles = [
   feb19,
   feb21,
   mar3,
-  mar10,
+  mar13,
+  mar14,
 ];
