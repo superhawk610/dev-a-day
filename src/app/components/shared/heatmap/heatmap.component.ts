@@ -18,7 +18,11 @@ export class HeatmapComponent implements OnInit {
 
   constructor(private articlesService: ArticlesService) {}
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.loadArticles();
+  }
+
+  async loadArticles(): Promise<void> {
     const articles = await this.articlesService.getArticles();
     const publishMap: DateMap = {};
     for (const article of articles) {

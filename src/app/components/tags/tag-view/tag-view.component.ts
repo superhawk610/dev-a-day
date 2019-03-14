@@ -12,6 +12,7 @@ import { ArticleIndex } from '../../../models/article.model';
   styleUrls: ['./tag-view.component.scss'],
 })
 export class TagViewComponent implements OnInit {
+  tagName: string;
   tag: Tag = null;
   articles: ArticleIndex[] = [];
 
@@ -20,12 +21,23 @@ export class TagViewComponent implements OnInit {
     private articlesService: ArticlesService,
     private helpersService: HelpersService,
     private seoService: SEOService,
-  ) {}
+  ) {
+    this.tagName = this.route.snapshot.paramMap.get('tag');
+  }
 
-  async ngOnInit() {
-    const tagName = this.route.snapshot.paramMap.get('tag');
-    this.seoService.setDocumentTitle(`#${tagName}`);
-    this.tag = await this.articlesService.getTag({ name: tagName });
-    this.articles = await this.articlesService.getArticles({ tagName });
+  ngOnInit() {
+    this.seoService.setDocumentTitle(`#${this.tagName}`);
+    this.loadTag();
+    this.loadArticles();
+  }
+
+  async loadTag(): Promise<void> {
+    this.tag = await this.articlesService.getTag({ name: this.tagName });
+  }
+
+  async loadArticles(): Promise<void> {
+    this.articles = await this.articlesService.getArticles({
+      tagName: this.tagName,
+    });
   }
 }

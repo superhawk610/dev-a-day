@@ -18,8 +18,12 @@ export class TagsComponent implements OnInit {
     private seoService: SEOService,
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.seoService.setDocumentTitle('Tags');
+    this.loadTags();
+  }
+
+  async loadTags(): Promise<void> {
     this.tags = await this.articlesService.getTags();
   }
 }

@@ -16,8 +16,12 @@ export class ArticlesComponent implements OnInit {
     private seoService: SEOService,
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.seoService.setDocumentTitle('Articles');
+    this.loadArticles();
+  }
+
+  async loadArticles(): Promise<void> {
     this.articles = await this.articlesService.getArticles();
   }
 }
