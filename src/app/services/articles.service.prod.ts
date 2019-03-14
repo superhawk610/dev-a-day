@@ -9,6 +9,9 @@ import { Tag, TagWhereUniqueInput } from '../models/tag.model';
 import { TAGS } from '../../constants';
 import { HttpClient } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
+
+const STATE_KEY_ARTICLES = makeStateKey('articles');
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +23,10 @@ export class ArticlesService {
   constructor(
     @Optional() @Inject(APP_BASE_HREF) origin: string,
     private http: HttpClient,
+    private state: TransferState,
   ) {
     this.apiRoot = `${origin || ''}/api`;
+    this.articles = state.get(STATE_KEY_ARTICLES, []);
   }
 
   async getCachedArticles(): Promise<ArticleIndex[]> {
@@ -31,6 +36,7 @@ export class ArticlesService {
       .get(`${this.apiRoot}/articles`)
       .toPromise() as Promise<ArticleIndex[]>);
     this.articles = articles.reverse();
+    this.state.set(STATE_KEY_ARTICLES, this.articles);
     return this.articles;
   }
 

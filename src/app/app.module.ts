@@ -1,4 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  BrowserTransferStateModule,
+} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MarkdownModule } from 'ngx-markdown';
@@ -19,6 +22,7 @@ import { SharedModule } from './components/shared/shared.module';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'dev-a-day' }),
+    BrowserTransferStateModule,
     HttpClientModule,
     AppRoutingModule,
     SharedModule,

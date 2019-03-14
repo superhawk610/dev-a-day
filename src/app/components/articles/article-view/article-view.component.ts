@@ -50,7 +50,6 @@ export class ArticleViewComponent implements OnInit {
   }
 
   async loadArticle() {
-    if (this.article) return;
     const slug = this.route.snapshot.paramMap.get('slug');
     const article = await this.articlesService.getArticle({ slug });
     [
