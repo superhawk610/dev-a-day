@@ -79,6 +79,12 @@ export class ArticleViewComponent implements OnInit {
 
         // add listeners to header permalinks
         $('markdown a[href^="#"]').on('click', this.scrollToHeader);
+
+        // redirect internal links to Angular's router
+        $('markdown a[href^="/"]').on(
+          'click',
+          this.internalRedirect.bind(this),
+        );
       }, 0);
 
       // scroll to hash if present in location.pathname (wait a second to give
@@ -101,6 +107,12 @@ export class ArticleViewComponent implements OnInit {
         }
       }, 1000);
     }
+  }
+
+  internalRedirect(event: Event) {
+    event.preventDefault();
+    const anchor = event.target as HTMLAnchorElement;
+    this.router.navigateByUrl(anchor.getAttribute('href'));
   }
 
   scrollToHeader(event: Event) {
