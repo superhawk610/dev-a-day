@@ -9,7 +9,7 @@ const article: Article = {
   subheader: '',
   body,
   preview: `Or, an idiomatic way to avoid callback hell.`,
-  tags: [TAGS.javascript],
+  tags: [TAGS.javascript, TAGS.rxjs],
   publishedOn: '2019-02-08',
   author: 'Aaron Ross',
   readingTime: { text: '9 min read', minutes: 8.5, time: 510000, words: 1700 },
