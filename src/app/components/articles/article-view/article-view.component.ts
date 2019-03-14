@@ -58,6 +58,11 @@ export class ArticleViewComponent implements OnInit {
       this.prevArticle,
     ] = await this.articlesService.getSurroundingArticles(article);
     this.seoService.setDocumentTitle(article.header);
+    this.seoService.setDocumentMeta({
+      description: article.preview,
+      author: article.author,
+      keywords: article.tags.map(t => t.name).join(','),
+    });
     this.seoService.setDocumentTwitterMeta({
       site: '@superhawk610',
       title: article.header,

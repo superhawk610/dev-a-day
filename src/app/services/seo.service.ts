@@ -3,7 +3,7 @@ import { Title, Meta } from '@angular/platform-browser';
 
 import { environment } from '../../environments/environment';
 
-// map from `<meta` names to their content
+// map from `<meta>` names to their content
 interface MetaDefinitions {
   [name: string]: string;
 }
