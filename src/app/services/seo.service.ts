@@ -34,7 +34,7 @@ export class SEOService {
     this.metaService.addTags(
       Object.keys(meta).map(name => ({
         name: `${prefix}${name}`,
-        content: meta[name],
+        content: meta[name].replace(/\r?\n?\s{2,}/g, ' '),
       })),
     );
   }
