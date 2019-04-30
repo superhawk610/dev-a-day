@@ -7,7 +7,9 @@
     <a routerLink="/articles/{{ article.slug }}">
       <h3>{{ article.header }}</h3>
     </a>
-    <h4 *ngIf="article.subheader" class="subheader">{{ article.subheader }}</h4>
+    <h4 *ngIf="article.subheader" class="subheader">
+      {{ article.subheader }}
+    </h4>
     <p>
       {{ article.preview }}
       <a routerLink="/articles/{{ article.slug }}">Read More...</a>
