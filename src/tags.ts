@@ -49,4 +49,8 @@ export const TAGS: { [name: string]: Tag } = {
     id: 12,
     name: 'RxJS',
   },
+  compSci: {
+    id: 13,
+    name: 'comp-sci',
+  },
 };

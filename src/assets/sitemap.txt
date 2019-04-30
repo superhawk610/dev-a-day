@@ -16,6 +16,7 @@ https://blog.aaronross.tech/articles/bind
 https://blog.aaronross.tech/articles/const
 https://blog.aaronross.tech/articles/rxjs-file-uploads
 https://blog.aaronross.tech/articles/rxjs-file-uploads-2
+https://blog.aaronross.tech/articles/big-o-notation
 https://blog.aaronross.tech/tags
 https://blog.aaronross.tech/tags/fp
 https://blog.aaronross.tech/tags/javascript
@@ -29,4 +30,5 @@ https://blog.aaronross.tech/tags/python
 https://blog.aaronross.tech/tags/ABCs
 https://blog.aaronross.tech/tags/dev-tools
 https://blog.aaronross.tech/tags/rxjs
+https://blog.aaronross.tech/tags/comp-sci
 https://blog.aaronross.tech/heatmap
